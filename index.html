@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .cover{
+            width: 400px;
+            margin: auto;
+            line-height: 50px;
+            text-align: center;
+        }
+        .cover h1{
+            text-transform: uppercase;
+        }
+        .cover h2{
+            font-style: oblique;
+            color: red;
+        }
+        .box{
+            width: 100%;
+            border: 1px solid rgb(255, 255, 255);
+            height: 20px;
+            box-shadow: 0 0 10px 0 rgb(117, 227, 231);
+        }
+        .innerbox{
+            background-color: rgb(91, 194, 241);
+            height: 18px;
+            width: 0;
+            transition: .1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover">
+        <h1>This is your captcha</h1>
+        <h2 id="genaret_value"></h2>
+        <div class="box">
+            <div class="innerbox" id="innerbox"></div>
+        </div>
+        <form onsubmit="runfun(this)" action="javascript:">
+            <input type="text" id="value">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <script>
+        /*Element Selection*/
+        var value=document.getElementById('value'),
+        textval= document.getElementById('genaret_value');
+        showfun();
+        setInterval(() => {showfun();}, 10000);
+
+        function runfun(){
+            let val= value.value,txval= textval.innerText;
+           if(txval==val){
+               alert("Awesome. Now You access our website :) ");
+
+           }else{
+               alert('Sorry. Please Fill the right value :( ');
+           }
+        }
+      function showfun() {
+            let =zisan=a=>{setTimeout(()=>{
+                    if(a<=100){
+                    innerbox.style.width=(a)+"%";
+                    a++;
+                    zisan(a);
+                };
+                }, 90);
+            };
+            zisan(0);
+            let a=Math.floor(Math.random() * 1000000);
+            document.getElementById('genaret_value').innerText=a;
+      }
+
+  
+    </script>
+</body>
+</html>
